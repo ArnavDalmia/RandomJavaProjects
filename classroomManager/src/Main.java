@@ -1,4 +1,3 @@
-package classroomManager;
 
 import java.util.Arrays;
 

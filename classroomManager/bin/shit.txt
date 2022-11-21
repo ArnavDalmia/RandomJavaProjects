@@ -1,0 +1,9 @@
+Matrix something = new Matrix(3, 4);
+		
+
+
+		something.setRandomValues(10,100); // error check for left to right
+		
+		something.displayArray();
+
+		int[] arr = something.getColumn(0); // error check for the incorrect value

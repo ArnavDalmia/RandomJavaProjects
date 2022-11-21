@@ -12,7 +12,6 @@ public class Matrix {
 	public Matrix(int row, int column, int integerFillValue) {
 		matrix = new int[row][column];
 		setSpecificValue(integerFillValue);
-		//program the setValue method to call the integerFill Value
 	}
 	
 	public void setRandomValues(int min,int max) {
@@ -145,5 +144,6 @@ public class Matrix {
 		return matrix;
 	}
 }
+
 
 	

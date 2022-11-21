@@ -54,7 +54,7 @@ public class Matrix {
 		}//end of i
 		return lowest;
 	}
-	public int averageOfEntries () {
+	public double averageOfEntries () {
 		int number; 
 		int counter;
 		number = 0;
@@ -66,7 +66,7 @@ public class Matrix {
 				counter+=1;
 			}//end of j
 		}//end of i
-		return (number/counter);//round it
+		return Utils.roundDouble((double)number/counter, 2);//round it
 	}
 	
 

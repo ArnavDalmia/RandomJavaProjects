@@ -50,8 +50,9 @@ public class Main {
 		System.out.println("8.	Print largest entry");
 		System.out.println("9.	Print average of entries");
 		System.out.println("10.	RESET MATRIX");
-		System.out.println("11.	Quit");
-		return Utils.obtainIntegerInputLowHigh("",1,11);				     
+		System.out.println("11.	Check if matrix is equal to another materix");
+		System.out.println("12.	Quit");
+		return Utils.obtainIntegerInputLowHigh("",1,12);				     
 	}
 
 
@@ -148,6 +149,20 @@ public class Main {
 
 				initialMatrix = createMatrix();
 				System.out.println("Matrix has been reset.\n\n");
+
+			}
+			else if(choice == 11){
+				Matrix secondMatrix;
+				System.out.println("Creating the second matrix");
+				secondMatrix = createMatrix();
+				System.out.println("Created the second matrix.\n");
+
+				secondMatrix.displayArray();
+
+				if (initialMatrix.getEquals(secondMatrix))
+					System.out.println("\nThese two matrixes are the same!\n");
+				else
+					System.out.println("\nThese two matrixes are not the same!\n");
 
 			}
 			else

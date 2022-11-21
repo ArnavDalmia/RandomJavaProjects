@@ -1,18 +1,51 @@
+/*public class Matrix
+ * This class contains the item type of Matrixx which contains a int [][] array
+ * 
+ * contains methods that are used to modify the int [][] array
+ * Matrix represents a table full of numbers that can be changed by the user
+ * In the Super class, Main class, a instance of Matrix will be called.
+ */
 
-import java.util.Random;
+import java.util.Random; //import random to be used in methods as a way to computer generate random numbers
 
-public class Matrix {
-	private int matrix [][];
+public class Matrix { //class start
 
-	
+	/* field variables
+		matrix : int [][] variable that will contain the numbers of the array/table accessed by class Matrix
+	 */
+							 // initializing field variables as private to make sure they can only be changes through setters rather than accessed directly from super class
+	private int matrix [][]; //field variable 
+
+	/* Constructor Matrix
+	 * This constructor is used to create an Matrix object which represents a table within classroomManager
+	 * Parameters:
+	 * 		row : int variable that represents the number of rows
+     *      column : int variable that represents the number of columns
+	 * Return Value
+	 * 		none
+	 * Local Variables:
+	 * 		none
+	 */
 	public Matrix(int row, int column) {
-		matrix = new int[row][column];
+		matrix = new int[row][column]; // initializes the field variable with the parameters
 
 	}
+	/* Constructor Matrix - overload
+	 * This constructor is used to create an Matrix object which represents a table within classroomManager, includes the integerFillValue variable which is the overload portion, in which it pre assigns all values within the Matrix array
+	 * Parameters:
+	 * 		row : int variable that represents the number of rows
+     *      column : int variable that represents the number of columns
+	 * 		integerFillValue : int variable that represents the value that will be set as the default value of the Matrix
+	 * Return Value
+	 * 		none
+	 * Local Variables:
+	 * 		none
+	 */
 	public Matrix(int row, int column, int integerFillValue) {
-		matrix = new int[row][column];
-		setSpecificValue(integerFillValue);
+		matrix = new int[row][column];// initializes the field variable with the parameters
+		setSpecificValue(integerFillValue); // sets the default values of the field variable matrix using the method setSpecificValue
 	}
+	
 	
 	public void setRandomValues(int min,int max) {
 		Random rand = new Random();
@@ -119,6 +152,7 @@ public class Matrix {
 		}
 		return source;
 	}
+	
 	public boolean getEquals(Matrix obj) { 
 		boolean valid;
 		valid = false;

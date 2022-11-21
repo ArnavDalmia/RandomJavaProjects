@@ -1,5 +1,4 @@
 
-import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
 
@@ -11,16 +10,15 @@ public class Main {
 		int column;
 		int value;
 
-		row = Utils.obtainIntegerInputLow("Please enter number of rows: ", 0);
-		column = Utils.obtainIntegerInputLow("Please enter number of columns: ", 0);
-		
+		row = Utils.obtainIntegerInputLow("Please enter number of rows: ", 1);
+		column = Utils.obtainIntegerInputLow("Please enter number of columns: ", 1);
 		
 		boolean valid;
 		valid  = false;
 		while(!valid){	
 			String answer;
 			System.out.println("Would you like to set the values of the matrix right now to ONE specific number?(YES/NO)");
-			System.out.println("If NO then values will be set to 11, until changed.");
+			System.out.println("If NO then values will be set to random numbers, UNTIL CHANGED.");
 
 			answer = userInput.nextLine();																							
 			answer = answer.toUpperCase();
@@ -34,11 +32,11 @@ public class Main {
 		}
 
 		if(valid){
-			value = Utils.obtainIntegerInputLow("Please enter the specific value: ",0);
+			value = Utils.obtainIntegerInputLowHigh("Please enter the specific value: ",10,99);
 			return new Matrix(row, column, value);
 		}
 		Matrix temp = new Matrix(row, column);
-		temp.setSpecificValue(11);
+		temp.setRandomValues(10,100);
 		return temp;
 	} 
 	public static int menu(){
@@ -48,9 +46,12 @@ public class Main {
 		System.out.println("4.	Print the transpose(opposite) of matrix");
 		System.out.println("5.	Set random values of matrix");								
 		System.out.println("6.	Set specific values of matrix");
-		System.out.println("7.	RESET MATRIX");
-		System.out.println("8.	Quit");
-		return Utils.obtainIntegerInputLowHigh("",1,8);				     
+		System.out.println("7.	Print smallest entry");
+		System.out.println("8.	Print largest entry");
+		System.out.println("9.	Print average of entries");
+		System.out.println("10.	RESET MATRIX");
+		System.out.println("11.	Quit");
+		return Utils.obtainIntegerInputLowHigh("",1,11);				     
 	}
 
 
@@ -114,24 +115,34 @@ public class Main {
 			else if(choice == 5){
 				int low;
 				int high;
-				low = Utils.obtainIntegerInput("What would you like to be lowbound of the random numbers: ");
-				high = Utils.obtainIntegerInput("What would you like to be highbound of the random numbers: ");
+				low = Utils.obtainIntegerInputLowHigh("What would you like to be lowbound of the random numbers: ",0,99);
+				high = Utils.obtainIntegerInputLowHigh("What would you like to be highbound of the random numbers: ",0,99);
 				if (high < low){
 					System.out.println("Error. High bound must be greater than Low bound. Please Try Again.\n");
 				}
 				else{
-					initialMatrix.setRandomValues(low, high);
+					initialMatrix.setRandomValues(low, high+1);
 					System.out.println("Successfully set values to be randomized between low and high ranges\n");
 
 				}
 			}
 			else if(choice == 6){
 				int value;
-				value = Utils.obtainIntegerInputLow("Enter specific value: ", 0);
+				value = Utils.obtainIntegerInputLowHigh("Enter specific value: ", 10, 99);
 				initialMatrix.setSpecificValue(value);
 				System.out.println("Matrix has been successfully changed to contain solely the value of "+value+".");
 			}
 			else if(choice == 7){
+				System.out.println("Matrix smallest value is "+initialMatrix.smallestEntry()+"\n");
+
+			}
+			else if(choice == 8){
+				System.out.println("Matrix largest value is "+initialMatrix.largestEntry()+"\n");
+			}
+			else if(choice == 9){
+				System.out.println("Matrix average of values is "+initialMatrix.averageOfEntries()+"\n");
+			}
+			else if(choice == 10){
 				System.out.println("Matrix has been reset to empty");
 				System.out.println("Information is required:\n\n");
 

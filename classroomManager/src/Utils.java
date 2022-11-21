@@ -35,7 +35,7 @@ public class Utils {
 																							//stores return of method in choice variable
 
 		if ((choice < low) || (choice > high)){												// checks if the choice variable is in between low and high, and if it isn't
-			System.out.println("Invalid Choice Entered. Value is not possible. Please try again.");						// there will be an error message that shows
+			System.out.println("Invalid Choice Entered. Value must be between "+low+", and "+high+". Please try again.");						// there will be an error message that shows
 		}
 		else 																				//If the integer choice is allowed in the range of high and low
 			valid = true;																	//changes the value of valid to stop the loop
@@ -68,7 +68,7 @@ public class Utils {
 																							//stores return of method in choice variable
 
 		if (choice < low){																								// checks if the choice variable is less than low
-			System.out.println("Invalid Choice Entered. Integer must be greater than "+low+"!");						// there will be an error message that shows
+			System.out.println("Invalid Choice Entered. Integer must be greater/equal to "+low+"!");						// there will be an error message that shows
 		}
 		else 																				//If the integer choice is allowed in the range of low bound
 			valid = true;																	//changes the value of valid to stop the loop

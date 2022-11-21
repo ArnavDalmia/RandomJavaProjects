@@ -5,7 +5,6 @@ public class Main {
 
 	public static Matrix createMatrix(){
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("Welcome to the Matrix creation program.");
 		System.out.println("Create Your Matrix\n");
 
 		int row;
@@ -21,7 +20,7 @@ public class Main {
 		while(!valid){	
 			String answer;
 			System.out.println("Would you like to set the values of the matrix right now to ONE specific number?(YES/NO)");
-			System.out.println("If NO then values will be set to 0, until changed.");
+			System.out.println("If NO then values will be set to 11, until changed.");
 
 			answer = userInput.nextLine();																							
 			answer = answer.toUpperCase();
@@ -39,7 +38,7 @@ public class Main {
 			return new Matrix(row, column, value);
 		}
 		Matrix temp = new Matrix(row, column);
-		temp.setSpecificValue(0);
+		temp.setSpecificValue(11);
 		return temp;
 	} 
 	public static int menu(){
@@ -57,6 +56,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Matrix initialMatrix;
+		System.out.println("Welcome to the Matrix creation program.");
 		initialMatrix = createMatrix();
 		System.out.println("Matrix has been made.\n\n");
 		
@@ -67,6 +67,7 @@ public class Main {
 			if (choice == 1){
 				initialMatrix.displayArray();
 			}
+			
 			else if(choice == 2){
 				int max;
 				max = initialMatrix.getRowCount();
@@ -76,6 +77,16 @@ public class Main {
 				int [] specificRow;
 				specificRow = initialMatrix.getRow(row-1);
 				//display portion needs to be done
+				System.out.println("\n"+initialMatrix.returnDashes(initialMatrix.getColumnCount() * 4));
+				
+				for (int j=0; j<specificRow.length ; j++)  {
+					System.out.print("|");
+					System.out.print(specificRow[j]);
+					System.out.print("|");
+				} //end for j
+				
+				System.out.println("\n"+initialMatrix.returnDashes(initialMatrix.getColumnCount() * 4));
+
 			}
 			else if(choice == 3){
 				int max;
@@ -86,6 +97,14 @@ public class Main {
 				int [] specificColumn;
 				specificColumn = initialMatrix.getColumn(row-1);
 				//display portion needs to be done
+				System.out.println("\n"+"----");
+				for (int j=0; j<specificColumn.length ; j++)  {
+					System.out.print("|");
+					System.out.print(specificColumn[j]);
+					System.out.print("|");
+					System.out.println("\n"+"----");
+				} //end for j
+
 			}
 			else if(choice == 4){
 				Matrix transpose;
@@ -125,6 +144,7 @@ public class Main {
 			
 		}//while loop 
 
+		System.out.println("Thank you for using the Matrix program.");
 		
 	}
 

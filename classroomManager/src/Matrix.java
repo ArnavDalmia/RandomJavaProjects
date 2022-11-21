@@ -84,9 +84,9 @@ public class Matrix {
 				System.out.print("|");
 				System.out.print(matrix[i][j]);
 				System.out.print("|");
-			} //end for i
+			} //end for j
 			System.out.println("\n"+returnDashes(matrix[0].length * 4));
-		} // end for j
+		} // end for i
 	}
 	
 	

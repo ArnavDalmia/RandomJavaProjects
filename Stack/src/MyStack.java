@@ -8,7 +8,8 @@ public class MyStack {
         arr.add(0,item);
     }
     public ClassA pop(){
-
+        if(arr.isEmpty())
+            throw new IllegalArgumentException();
         ClassA temp;
         temp = arr.get(0);
         arr.remove(0);

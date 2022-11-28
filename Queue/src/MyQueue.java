@@ -9,6 +9,8 @@ public class MyQueue {
     }
 
     public ClassA dequeue(){
+        if(arr.isEmpty())
+            throw new IllegalArgumentException();
         ClassA temp;
         temp = arr.get(0);
         arr.remove(0);

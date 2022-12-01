@@ -1,6 +1,18 @@
+/* class Main 
+this class is responsible for the management of the program and ensures user input is valid before calling other classes and methods
+*/
+
 import java.util.ArrayList;
 public class Main {
-
+	/* method menu
+	 * This method optains the user input to the main menu
+	 * Parameters:
+	 * 		none
+	 * Return Value
+	 * 		int variable containing the user inputted menu option
+	 * Local Variables:
+	 * 		none
+	 */
 	public static int menu(){
 		System.out.println("1.	Add Queue Entry");		//displays menu options
 		System.out.println("2.	Dequeue Entry");	
@@ -12,7 +24,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		MyQueue queue  = new MyQueue();
-		queue.enqueue(new ClassA("Bob", 12));
+		queue.enqueue(new ClassA("Bob", 12)); // sets 5 initial values within the queue, can be changed with the rest of the operation of the program
 		queue.enqueue(new ClassA("Joe", 123));
 		queue.enqueue(new ClassA("Zoey", 121));
 		queue.enqueue(new ClassA("Chris", 122));

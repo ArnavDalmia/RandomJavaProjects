@@ -17,21 +17,12 @@ public class Main {
 					valid = true;
 					}	
 			}//while
-			
-				
 		}//for
 	}
 	public static void main(String[] args) {
 		Square board = new Square();
 		board.setValues();
 		randomizer(board);
-		//board.setBoard(0, 0);
-		//board.setBoard(1, 1);
-		//board.setBoard(2, 2);
-		//board.setBoard(3, 3);
-		//board.setBoard(4, 4);
-		
-		
 		System.out.println("Welcome");
 		int counter=0;
 		int cookieCounter = 0;
@@ -51,14 +42,10 @@ public class Main {
 				System.out.println("Wrong. Either you have already found this cookie, or there is none there.");
 				
 			counter++;
-			
 		}
 		System.out.println("\nProgram is completed. Here is your score:");
 		System.out.println("You guessed "+ cookieCounter+" cookies, in "+counter+" tries.");
-			
-	
-	
-	
+
 	}
 	
 

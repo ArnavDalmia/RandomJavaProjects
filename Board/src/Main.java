@@ -10,8 +10,8 @@ public class Main {
 			valid = false;
 			
 			while(!valid) {
-				row = randomBetween(0,9);
-				col = randomBetween(0,9);
+				row = Utils.randomBetween(0,9);
+				col = Utils.randomBetween(0,9);
 				if (board.getBoard()[row][col] != 1) {
 					board.getBoard()[row][col] = 1;
 					valid = true;
@@ -35,11 +35,16 @@ public class Main {
 
 			if(board.getBoard()[row][col] == 1) {
 				System.out.println("Congrats there is a cookie at row: "+(row+1)+", and at col: "+(col+1));
-				board.getBoard()[row][col] = 0;
+				board.getBoard()[row][col] = -1;
 				cookieCounter+=1;
 			}
-			else
-				System.out.println("Wrong. Either you have already found this cookie, or there is none there.");
+			else{
+				if (board.getBoard()[row][col] == -1)
+					System.out.println("Wrong. You have already found this cookie.");
+				else
+					System.out.println("Wrong. there is none there.");
+
+			}
 				
 			counter++;
 		}

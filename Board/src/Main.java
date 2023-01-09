@@ -10,8 +10,8 @@ public class Main {
 			valid = false;
 			
 			while(!valid) {
-				row = randomBetween(0,9);
-				col = randomBetween(0,9);
+				row = Utils.randomBetween(0,9);
+				col = Utils.randomBetween(0,9);
 				if (board.getBoard()[row][col] != 1) {
 					board.getBoard()[row][col] = 1;
 					valid = true;

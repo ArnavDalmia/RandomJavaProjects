@@ -158,11 +158,10 @@ public static double roundDouble(double value, int decimalPlaces) {
 	return Math.round(value*Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces);
 }
 
-public static int randomBetween(int low, int high){
-	Random rand = new Random();
-	int number;
-	number = rand.nextInt(low, high);
-	return number;
+
+public static int randomBetween(int min, int max) {
+	Random rand = new Random(); 
+	return rand.nextInt(max-min+1)+min;
 }
 
 }

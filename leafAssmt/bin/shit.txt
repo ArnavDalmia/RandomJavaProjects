@@ -1,0 +1,7 @@
+	int highestStem;
+		highestStem  = numbers.get(numbers.size()-1);
+        highestStem = highestStem/10;
+		for(int i = 0; i< highestStem; i++){
+			graph.add(new ArrayList<Integer>());
+            graph.get(i).add(i+1);
+		}

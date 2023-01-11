@@ -2,9 +2,13 @@
  * This class is the super class Main
  * It operates the entire program
  */
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
-	
+	public static void readFile(ArrayList<Employee> people){
+
+	}
 	/* method menu
 	 * This method optains the user input to the main menu
 	 * Parameters:
@@ -22,12 +26,8 @@ public class Main {
 		System.out.println("5.	Set random values of matrix");								
 		System.out.println("6.	Set specific values of matrix");
 		System.out.println("7.	Print smallest entry");
-		System.out.println("8.	Print largest entry");
-		System.out.println("9.	Print average of entries");
-		System.out.println("10.	RESET MATRIX");
-		System.out.println("11.	Check if matrix is equal to another materix");
-		System.out.println("12.	Quit");
-		return Utils.obtainIntegerInputLowHigh("",1,12);				 //returns option number, and verefies it using the Utils class    
+		System.out.println("8.	Quit");
+		return Utils.obtainIntegerInputLowHigh("",1,9);				 //returns option number, and verefies it using the Utils class    
 	}
 
 	/* method main
@@ -40,6 +40,11 @@ public class Main {
 	 * 		
 	 */
 	public static void main(String[] args) {
+		ArrayList<Employee> people = new ArrayList<>();
+		readFile(people);
 		
 
+	
+
+}
 }

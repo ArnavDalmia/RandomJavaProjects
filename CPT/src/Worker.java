@@ -1,3 +1,3 @@
-public class Worker {
+public class Worker extends Manager{
     
 }

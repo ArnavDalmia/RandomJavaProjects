@@ -6,6 +6,19 @@ public class Manager extends Employee {
         this.department = dept;
     }
 
+    public Manager getNewEmployee(){
+        String name = Utils.obtainInput("Enter Name: ");
+        int ID = Utils.obtainIntegerInput("Enter ID: ");
+        int age = Utils.obtainIntegerInput("Enter age: ");
+        int salary = Utils.obtainIntegerInput("Enter salary: ");
+        String dept = Utils.obtainInput("Enter Department: ");
+
+
+        Manager temp = new Manager(name, age, ID, salary, dept);
+        return temp;
+
+    }
+
     public void printDetailsSimple(){
         super.printDetailsSimple();
     }

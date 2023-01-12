@@ -26,7 +26,7 @@ public class Main {
     		        lineCount++;
     		        people.add(new Employee(data[0],Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
     		    }
-				else if (data.length == 4) {
+				else if (data.length == 5) {
     		        lineCount++;
     		        people.add(new Manager(data[0],Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4]));
     		    }
@@ -78,7 +78,8 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList<Employee> people = new ArrayList<>();
 		readFile(people);
-		
+		people.get(2).printDetails();
+
 		
 
 	

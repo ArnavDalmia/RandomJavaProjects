@@ -10,6 +10,21 @@ public class Employee {
         this.salary = salary;
     }
     
+    public String getName(){
+        return name;
+    }
+
+    public Employee getNewEmployee(){
+        String name = Utils.obtainInput("Enter Name: ");
+        int ID = Utils.obtainIntegerInput("Enter ID: ");
+        int age = Utils.obtainIntegerInput("Enter age: ");
+        int salary = Utils.obtainIntegerInput("Enter salary: ");
+
+        Employee temp = new Employee(name, age, ID, salary);
+        return temp;
+
+    }
+
     public void printDetailsSimple(){
         System.out.print("Employee ID     :  " + ID);
         System.out.print(",  Employee Name   :  " + name);

@@ -148,6 +148,11 @@ public static double roundDouble(double value, int decimalPlaces) {
 	return Math.round(value*Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces);
 }
 
-
+public static String obtainInput(String prompMessage){
+	String temp = "";
+	Scanner userInput = new Scanner(System.in);
+	temp = userInput.nextLine();
+	return temp;
+}
 
 }

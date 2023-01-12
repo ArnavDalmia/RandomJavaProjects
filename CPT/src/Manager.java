@@ -1,5 +1,5 @@
 public class Manager extends Employee {
-    String department;
+    private String department;
 
     public Manager(String name, int age, int ID, int salary, String dept) {
         super(name, age, ID, salary);

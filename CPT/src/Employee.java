@@ -1,15 +1,15 @@
 public class Employee {
-    String name;
-    int age;
-    int ID;
-    int salary;
+    private String name;
+    private int age;
+    private int ID;
+    private int salary;
     public Employee(String name,int age,int ID,int salary){
         this.name = name;
         this.age = age;
         this.ID = ID;
         this.salary = salary;
     }
-
+    
     public void printDetailsSimple(){
         System.out.print("Employee ID     :  " + ID);
         System.out.print(",  Employee Name   :  " + name);

@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.io.*;
 import java.text.*; 
-import java.util.Random; 
 
 public class Main {
 	public static void readFile(ArrayList<Employee> people) { 	
 
-        File txtFile = new File("database.txt");
+        File txtFile = new File("database.txt");//laptop
+
     	String [] data; 
     	int lineCount=1; 
     	String line; // used to read a line at a time
@@ -47,9 +47,9 @@ public class Main {
 		Employee temp = new Employee(null, null, 0, 0, 0);
 		while (!invalid){
 			String name = Utils.obtainInput("Enter Name: ");
-			int ID = Utils.obtainIntegerInput("Enter ID: ");
-			int age = Utils.obtainIntegerInput("Enter age: ");
-			int salary = Utils.obtainIntegerInput("Enter salary: ");
+			int ID = Utils.obtainIntegerInputLow("Enter ID: ", 100000);
+			int age = Utils.obtainIntegerInputLow("Enter age: ",0);
+			int salary = Utils.obtainIntegerInputLow("Enter salary: ",0);
 			String type = Utils.obtainInput("Enter Employee Status(Employee or Manager): ");
 
 			boolean verify = true;
@@ -74,7 +74,7 @@ public class Main {
 
 	public static void writeToFile(ArrayList<Employee> people){
 		Scanner userInput = new Scanner(System.in);
-			File dataFile = new File("database.txt");
+			File dataFile = new File("database.txt"); // database.txt for laptop
 				
 			try{
 				// Initialize BufferedWriter and FileWriter objects
@@ -105,10 +105,70 @@ public class Main {
 			  }
 		} // end main()
 	
+	public static int inList(ArrayList<Employee> people){
+		int index = 0;
 
+		boolean found = false;
+		while (!found){
+				String name;
+				name = Utils.obtainInput("Enter Name of employee: ");
 
+				boolean foundWithinLoop = false;
+				for(int i = 0; i < people.size(); i++){
+					Employee e = people.get(i);
+					if (e.getName() == name)
+						foundWithinLoop = true;
+						index = i;
+							}
+			if (foundWithinLoop)
+					found = true;
+			else
+				System.out.println("Employee doesn't exist. Please check spelling as it is case sensistive.");
+			}
+		return index;
+	}
 
+	public static void displayAllEmployees(ArrayList<Employee> people){
+		for(Employee e : people){
+			e.printDetailsSimple();
+		}
+	}
+	public static void displaySpecificEmp(ArrayList<Employee> people){
+		Employee emp = people.get(inList(people));
+		emp.printDetails();
+	}
+	public static void changeSalary(ArrayList<Employee> people){
+		int index = inList(people);
+		int newSalary;
+		newSalary = Utils.obtainIntegerInputLow("Enter New Salary",0);
+		people.get(index).setSalary(newSalary);
+		System.out.println("Salary has been adjusted.");
+	}
 
+	public static void promote(ArrayList<Employee> people){
+		int index = inList(people);
+		if (people.get(index).getType().equals("Manager"))
+			System.out.println("Sorry this is a Manager, requires CEO permission and CEO software to promote.");
+		else{
+			people.get(index).setType("Manager");
+			System.out.println(people.get(index).getName() + " has been changed to a Manager.");
+		}
+	}
+	public static void demote(ArrayList<Employee> people){
+		int index = inList(people);
+		if (people.get(index).getType().equals("Employee"))
+			System.out.println("Sorry this is a Employee, requires CEO permission and CEO software to fire.");
+		else{
+			people.get(index).setType("Employee");
+			System.out.println(people.get(index).getName() + " has been changed to a Employee.");
+		}
+	}
+	public static void remove(ArrayList<Employee> people){
+		int index = inList(people);
+		people.remove(index);
+		System.out.println("Successfully removed Employee");
+	}
+	
 	/* method menu
 	 * This method optains the user input to the main menu
 	 * Parameters:
@@ -119,13 +179,13 @@ public class Main {
 	 * 		none
 	 */
 	public static int menu(){
-		System.out.println("1.	Display matrix");		//displays menu options
-		System.out.println("2.	Print specific Row");	
-		System.out.println("3.	Print specific Column");							
-		System.out.println("4.	Print the transpose(opposite) of matrix");
-		System.out.println("5.	Set random values of matrix");								
-		System.out.println("6.	Set specific values of matrix");
-		System.out.println("7.	Print smallest entry");
+		System.out.println("1.	Display All Employees(Managers INCLUDED)");		//displays menu options 
+		System.out.println("2.	Display Specific Employee");	
+		System.out.println("3.	Add Employee(Managers INCLUDED)");			//need to add verify for managers or employees				
+		System.out.println("4.	Remove Employee(Managers INCLUDED)");		
+		System.out.println("5.	Promote Employee(NOT MANAGERS)");								
+		System.out.println("6.	Demote Manager(NOT EMPLOYEES)");		
+		System.out.println("7.	Change Salary of Employees");
 		System.out.println("8.	Quit");
 		return Utils.obtainIntegerInputLowHigh("",1,9);				 //returns option number, and verefies it using the Utils class    
 	}
@@ -140,6 +200,8 @@ public class Main {
 	 * 		
 	 */
 	public static void main(String[] args) {
+// remember to add functionality that there is always at least one employee in list
+
 		ArrayList<Employee> people = new ArrayList<>();
 		readFile(people);
 		people.get(0).printDetails();

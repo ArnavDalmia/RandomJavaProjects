@@ -25,6 +25,12 @@ public class Employee {
     public int getSalary(){
         return salary;
     }
+    public void setSalary(int salary){
+        this.salary = salary;
+    }
+    public void setType(String type){
+        this.type = type;
+    }
 
     public String getType(){
         return type;

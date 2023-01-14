@@ -9,6 +9,21 @@ import java.io.*;
 import java.text.*; 
 
 public class Main {
+	public static void login(String username, String password){
+		boolean valid;
+		valid = false;
+
+		while(!valid){
+			String userInput1 = Utils.obtainInput("Enter Login Username: ");
+			String userInput2 = Utils.obtainInput("Enter Password: ");
+
+			if (userInput1.equals(username) && userInput2.equals(password))
+				valid = true;
+			else	
+				System.out.println("Login Failed. Username OR Password are incorrect. Try Again. ");
+		}
+		System.out.println("Login COmpleted. Welcome Mr Monster. ");
+	}
 	public static void readFile(ArrayList<Employee> people) { 	
 
         File txtFile = new File("database.txt");//laptop
@@ -199,15 +214,45 @@ public class Main {
 	 * Local Variables:
 	 * 		
 	 */
-	public static void main(String[] args) {
-// remember to add functionality that there is always at least one employee in list
+	public static void main(String[] args) { // remember to add functionality that there is always at least one employee in list
+		final String username = "Cookie";
+		final String password = "Monster";
+		login(username, password);
 
 		ArrayList<Employee> people = new ArrayList<>();
 		readFile(people);
-		people.get(0).printDetails();
-		people.add(newEmp(people));
-		//people.remove(0);
-		writeToFile(people);
+
+		boolean loopQuit = false;
+		while (!loopQuit){
+			int option;
+			option = menu();
+			if (option == 1){
+				displayAllEmployees(people);
+			}
+			else if (option == 2){
+				displaySpecificEmp(people);
+			}
+			else if (option == 3){
+				people.add(newEmp(people));
+			}
+			else if (option == 4){
+				remove(people);
+			}
+			else if (option == 5){
+				promote(people);
+			}
+			else if (option == 6){
+				demote(people);
+			}
+			else if (option == 7){
+				changeSalary(people);
+			}
+			else if (option == 8){
+				loopQuit = true;
+			}
+			writeToFile(people);
+			
+		}
 
 		
 

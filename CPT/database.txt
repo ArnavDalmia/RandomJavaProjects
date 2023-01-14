@@ -1,1 +1,3 @@
-Emp, Arnav, 18, 1, 12123
+Employee, Jack, 34, 230498, 12000
+Manager, Emily, 21, 345897, 43000
+Employee, Zach, 36, 234671, 12000

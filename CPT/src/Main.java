@@ -22,14 +22,11 @@ public class Main {
     	    
     		while (line != null)  {
     		    data = line.split(", ");
-    		    if (data.length == 4) {
+    		    if (data.length == 5) {
     		        lineCount++;
-    		        people.add(new Employee(data[0],Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
+    		        people.add(new Employee(data[0],data[1],Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])));
     		    }
-				else if (data.length == 5) {
-    		        lineCount++;
-    		        people.add(new Manager(data[0],Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4]));
-    		    }
+
     		    else
     		        System.out.println("Warning. Invalid output found at line #: "+lineCount+
     		                            " "+Arrays.toString(data));
@@ -44,6 +41,73 @@ public class Main {
     			System.err.println("IOException:" + e.getMessage());	
     	} //end catch
     }
+
+    public static Employee newEmp(ArrayList<Employee> people){
+		boolean invalid = false;
+		Employee temp = new Employee(null, null, 0, 0, 0);
+		while (!invalid){
+			String name = Utils.obtainInput("Enter Name: ");
+			int ID = Utils.obtainIntegerInput("Enter ID: ");
+			int age = Utils.obtainIntegerInput("Enter age: ");
+			int salary = Utils.obtainIntegerInput("Enter salary: ");
+			String type = Utils.obtainInput("Enter Employee Status(Employee or Manager): ");
+
+			boolean verify = true;
+			for (Employee b : people){
+				if (b.getID() == ID){
+					verify = false;
+				} 
+			}
+			if (verify){
+				temp = new Employee(type, name, age, ID, salary);
+				invalid = true;
+			}
+			else
+				System.out.println("Employee ID exists in system. Try Again!");
+	
+		}
+     
+        return temp;
+
+    }
+
+
+	public static void writeToFile(ArrayList<Employee> people){
+		Scanner userInput = new Scanner(System.in);
+			File dataFile = new File("database.txt");
+				
+			try{
+				// Initialize BufferedWriter and FileWriter objects
+				BufferedWriter myFile = new BufferedWriter(new FileWriter(dataFile));
+		
+				for (int i =0; i<people.size();i++ ){
+					Employee b = people.get(i);
+			
+						// Write data to file
+					myFile.write((String) b.getType() + ", ");
+					myFile.write((String) b.getName() + ", ");
+					myFile.write(Integer.toString(b.getAge()) + ", ");
+					myFile.write(Integer.toString(b.getID()) + ", ");
+					myFile.write(Integer.toString(b.getSalary()));
+					myFile.newLine();
+					} //end for loop
+		
+				// Close BufferedWriter stream
+				 myFile.close();
+					  
+				// Confirm that data has been written
+				System.out.println("The data has been successfully written to the file.");
+			} // end try statement
+		
+			// Handle exception if there’s a problem writing to file
+			  catch (IOException e) {
+				  System.err.println(e.getMessage() + "Error encountered writing to file!");
+			  }
+		} // end main()
+	
+
+
+
 
 	/* method menu
 	 * This method optains the user input to the main menu
@@ -78,7 +142,10 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList<Employee> people = new ArrayList<>();
 		readFile(people);
-		people.get(2).printDetails();
+		people.get(0).printDetails();
+		people.add(newEmp(people));
+		//people.remove(0);
+		writeToFile(people);
 
 		
 

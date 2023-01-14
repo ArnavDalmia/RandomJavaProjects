@@ -151,6 +151,7 @@ public static double roundDouble(double value, int decimalPlaces) {
 public static String obtainInput(String prompMessage){
 	String temp = "";
 	Scanner userInput = new Scanner(System.in);
+	System.out.println(prompMessage);
 	temp = userInput.nextLine();
 	return temp;
 }

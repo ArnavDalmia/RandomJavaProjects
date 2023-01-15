@@ -61,8 +61,8 @@ public class Main {
 		boolean invalid = false;
 		Employee temp = new Employee(null, null, 0, 0, 0);
 		while (!invalid){
-			String name = Utils.obtainInput("Enter Name: ");
-			int ID = Utils.obtainIntegerInputLow("Enter ID: ", 100000);
+			String name = Utils.obtainInput("Enter Full Name: ");
+			int ID = Utils.obtainIntegerInputLowHigh("Enter ID: ", 100000, 1000000);
 			int age = Utils.obtainIntegerInputLow("Enter age: ",0);
 			int salary = Utils.obtainIntegerInputLow("Enter salary: ",0);
 			String type = Utils.obtainInput("Enter Employee Status(Employee or Manager): ");
@@ -74,11 +74,16 @@ public class Main {
 				} 
 			}
 			if (verify){
-				temp = new Employee(type, name, age, ID, salary);
-				invalid = true;
+				if(!(type.equals("Manager") || type.equals("Employee")))
+					System.out.println("Employee Type must be specified as Employee or Manager. ***Case Sensitive. Try again!\n");
+
+
+				else{
+					temp = new Employee(type, name, age, ID, salary);
+					invalid = true;}
 			}
 			else
-				System.out.println("Employee ID exists in system. Try Again!");
+				System.out.println("Employee ID exists in system. Try Again!\n");
 	
 		}
      
@@ -118,24 +123,25 @@ public class Main {
 			  catch (IOException e) {
 				  System.err.println(e.getMessage() + "Error encountered writing to file!");
 			  }
-		} // end main()
+			  System.out.println("\n");
+			}
 	
 	public static int inList(ArrayList<Employee> people){
-		int index = 0;
+		int index = -1;
 
 		boolean found = false;
 		while (!found){
-				String name;
-				name = Utils.obtainInput("Enter Name of employee: ");
+				int ID;
+				ID = Utils.obtainIntegerInput("Enter ID of employee: ");
 
-				boolean foundWithinLoop = false;
 				for(int i = 0; i < people.size(); i++){
 					Employee e = people.get(i);
-					if (e.getName() == name)
-						foundWithinLoop = true;
-						index = i;
+					if (e.getID() == (ID))
+						index = people.indexOf(e);
+					
+						
 							}
-			if (foundWithinLoop)
+			if (index > -1)
 					found = true;
 			else
 				System.out.println("Employee doesn't exist. Please check spelling as it is case sensistive.");
@@ -224,39 +230,40 @@ public class Main {
 
 		boolean loopQuit = false;
 		while (!loopQuit){
-			int option;
-			option = menu();
-			if (option == 1){
-				displayAllEmployees(people);
-			}
-			else if (option == 2){
-				displaySpecificEmp(people);
-			}
-			else if (option == 3){
+			if(people.size() < 2){
+				System.out.println("Database requires at least two entries. Please create new employee below:");
 				people.add(newEmp(people));
 			}
-			else if (option == 4){
-				remove(people);
+			else {
+				int option;
+				option = menu();
+				if (option == 1){
+					displayAllEmployees(people);
+				}
+				else if (option == 2){
+					displaySpecificEmp(people);
+				}
+				else if (option == 3){
+					people.add(newEmp(people));
+				}
+				else if (option == 4){
+					remove(people);
+				}
+				else if (option == 5){
+					promote(people);
+				}
+				else if (option == 6){
+					demote(people);
+				}
+				else if (option == 7){
+					changeSalary(people);
+				}
+				else if (option == 8){
+					loopQuit = true;
+				}
+				writeToFile(people);	
 			}
-			else if (option == 5){
-				promote(people);
-			}
-			else if (option == 6){
-				demote(people);
-			}
-			else if (option == 7){
-				changeSalary(people);
-			}
-			else if (option == 8){
-				loopQuit = true;
-			}
-			writeToFile(people);
-			
-		}
-
-		
-
-	
-
+	}
+		System.out.println("Thanks for using program. OPERATIONS COMPLETED");
 }
 }

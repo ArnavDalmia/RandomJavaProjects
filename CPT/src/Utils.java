@@ -156,18 +156,31 @@ public static String obtainInput(String prompMessage){
 	return temp;
 }
 
+	/*Method obtainInputSpecificAnswers
+ * This method is used to obtain a user input and check if is valid
+ * 
+ * Parameters:
+ * 			prompMessage :	String message that is asked of the user so that they can input based on the message
+ * 			answer1 :	String variable representing a valid entry
+ * 			answer2 : String variable representing a valid entry
+ * Return Values:
+ * 			temp :	String input that has been validated
+ * 
+ * Local Variables Used:
+ * 			valid :		boolean variable that is used for looping through the user inputted respoinses as a way to ensure it meets the valid criteria
+ */
 public static String obtainInputSpecificAnswers(String prompMessage, String answer1, String answer2){
-	String temp = "";
-	boolean valid;
+	String temp = ""; // init variable temp that will contain user input
+	boolean valid;  // set boolean valid to false, for looping
 	valid = false;
-	while(!valid){
-		temp = obtainInput(prompMessage);
-		if (temp.equals(answer1) || temp.equals(answer2))
-			valid = true;
-		else
+	while(!valid){ //loop start
+		temp = obtainInput(prompMessage);//obtain user input
+		if (temp.equals(answer1) || temp.equals(answer2)) // checks if it is valid
+			valid = true; // if the criteria is met, then breaks out of loop
+		else // if not valid, prints error message and redoes loop
 			System.out.println("*****Input must be either "+ answer1 + " or "+answer2);
 	}
-	return temp;
+	return temp; // returns valid temp
 }
 
 }

@@ -156,4 +156,18 @@ public static String obtainInput(String prompMessage){
 	return temp;
 }
 
+public static String obtainInputSpecificAnswers(String prompMessage, String answer1, String answer2){
+	String temp = "";
+	boolean valid;
+	valid = false;
+	while(!valid){
+		temp = obtainInput(prompMessage);
+		if (temp.equals(answer1) || temp.equals(answer2))
+			valid = true;
+		else
+			System.out.println("*****Input must be either "+ answer1 + " or "+answer2);
+	}
+	return temp;
+}
+
 }

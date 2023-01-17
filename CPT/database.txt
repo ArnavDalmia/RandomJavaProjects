@@ -1,1 +1,4 @@
 Manager, Emily, 21, 345897, 43000
+Employee, 7, 67, 765432, 100000000
+Employee, Andrew, 69, 696969, 1234567
+Employee, 1, 12, 123456, 123456

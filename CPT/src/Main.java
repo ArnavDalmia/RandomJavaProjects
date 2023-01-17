@@ -65,7 +65,7 @@ public class Main {
 			int ID = Utils.obtainIntegerInputLowHigh("Enter ID: ", 100000, 1000000);
 			int age = Utils.obtainIntegerInputLow("Enter age: ",0);
 			int salary = Utils.obtainIntegerInputLow("Enter salary: ",0);
-			String type = Utils.obtainInput("Enter Employee Status(Employee or Manager): ");
+			String type = Utils.obtainInputSpecificAnswers("Enter Employee Status(Employee or Manager): ", "Employee", "Manager6");
 
 			boolean verify = true;
 			for (Employee b : people){

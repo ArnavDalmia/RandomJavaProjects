@@ -1,0 +1,2 @@
+Employee, Arnav, 18, 123123, 12000
+Manager, Bob, 21, 123456, 120000

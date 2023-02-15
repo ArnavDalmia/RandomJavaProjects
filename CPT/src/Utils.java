@@ -177,10 +177,11 @@ public static String obtainInputSpecificAnswers(String prompMessage, String answ
 		temp = obtainInput(prompMessage);//obtain user input
 		if (temp.equals(answer1) || temp.equals(answer2)) // checks if it is valid
 			valid = true; // if the criteria is met, then breaks out of loop
-		else // if not valid, prints error message and redoes loop
+		else{ // if not valid, prints error message and redoes loop
 			System.out.println("*****Input must be either "+ answer1 + " or "+answer2);
 			System.out.println("Employee Type must be specified as Employee or Manager. ***Case Sensitive. Try again!\n");
-	}
+	
+			}	}
 	return temp; // returns valid temp
 }
 

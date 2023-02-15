@@ -105,10 +105,10 @@ public class Main {
 		Employee temp = new Employee(null, null, 0, 0, 0);//initializing invalid and temp, so that loop can commence
 		while (!invalid){
 			String name = Utils.obtainInput("Enter Full Name: "); // asks user for information regarding name, ID, age, salary, and type
-			int ID = Utils.obtainIntegerInputLowHigh("Enter ID: ", 100000, 1000000);
+			int ID = Utils.obtainIntegerInputLowHigh("Enter ID(unique 6 digit): ", 100000, 1000000);
 			int age = Utils.obtainIntegerInputLow("Enter age: ",0);
 			int salary = Utils.obtainIntegerInputLow("Enter salary: ",0);
-			String type = Utils.obtainInputSpecificAnswers("Enter Employee Status(Employee or Manager): ", "Employee", "Manager6");
+			String type = Utils.obtainInputSpecificAnswers("Enter Employee Status(Employee or Manager): ", "Employee", "Manager");
 
 			boolean verify = true; // init verify for loop
 			for (Employee b : people){ 

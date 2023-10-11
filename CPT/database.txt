@@ -1,4 +1,0 @@
-Manager, Emily, 21, 345897, 43000
-Manager, Andrew, 58, 696969, 23567
-Employee, Jack, 34, 123123, 19000
-Manager, Chris, 23, 567890, 1
